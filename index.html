@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div>
+            <h1>Enter code to defuse the bomb</h1>
+            <input type="text" id="input" />
+            <br />
+            <img src="https://res.cloudinary.com/dqvaejele/image/upload/v1670136622/2659206_g4nqvj.jpg" alt="bomb" class="bomb" />
+            <p class="timer"></p>
+    
+        </div>
+        <script>
+            let inputEl = document.getElementById("input");
+            let timerEl = document.querySelector("p");
+
+            let counter = 10;
+
+            let intervalId = setInterval(function() {
+            counter = counter - 1;
+            timerEl.textContent = counter;
+            if (counter === 0) {
+                timerEl.textContent = "Boom!!!";
+                clearInterval(intervalId);
+                    }}, 1000);
+
+            inputEl.addEventListener("keydown", function(event) {
+            let inputElText = inputEl.value;
+            if (event.key === "Enter" && inputElText === "defuse" && counter !== 0) {
+                timerEl.textContent = "You Did It...";
+                clearInterval(intervalId);
+                        }});
+            </script>
+    </body>
+</html>
